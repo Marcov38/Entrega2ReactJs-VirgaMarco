@@ -1,0 +1,9 @@
+.MuiButtonBase-root{
+    height: 100%;
+}
+
+.MuiCardContent-root{
+    height: 100%;
+    border: 2px grey solid
+}
+
