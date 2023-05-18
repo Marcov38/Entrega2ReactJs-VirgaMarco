@@ -3,14 +3,3 @@
     padding: 0px;
     box-sizing: border-box;
 }
-
-.Cards{
-    height: 100%;
-}
-
-.CardApp{
-    display: grid;
-    grid-template-columns: repeat(3, 3fr);
-    padding-top: 20px;
-    padding-left: 150px;
-}
