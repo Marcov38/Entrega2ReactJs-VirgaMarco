@@ -1,0 +1,12 @@
+.card-product {
+    height: 100%;
+}
+
+.card-product-data {
+    height: 100%;
+    border: 2px grey solid;
+}
+
+.card-product-button-container {
+    justify-content: center;
+}

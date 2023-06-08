@@ -1,12 +1,15 @@
-.MuiContainer-root{
+.MuiContainer-root {
     background-color: black;
     padding-right: 0px;
     padding-left: 5px;
 }
 
-.MuiToolbar-root{
+.MuiToolbar-root {
     width: 100%;
     gap: 30px;
 }
 
-
+.MuiButton-root a {
+    text-decoration: none;
+    color: white;
+}
