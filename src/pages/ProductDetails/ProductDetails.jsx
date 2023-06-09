@@ -9,7 +9,7 @@ const ProductDetails = () => {
     const product = getProduct(id);
 
     return (
-        <div>
+        <div className="product-details-container">
             <CardProducts
                 key={product.productId}
                 name={product.name}
