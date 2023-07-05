@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react';
 
 const CartWidget = () => {
     return (
-        <div>
-            <p>0</p>
+        <div className="mi-carrito">
+            <button>0</button>
         </div>
-    )
-}
+    );
+};
 
-export default CartWidget
+export default CartWidget;
