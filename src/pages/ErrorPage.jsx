@@ -1,11 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react';
+import ErrorImage from '../assets/ErrorPage.jpg';
 
 const ErrorPage = () => {
-  return (
-    <div style={{textAlign:'center'}}>
-        <h1>Error al cargar esta pagina</h1>
-    </div>
-  )
-}
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            window.location.href = '/';
+        }, 2000);
 
-export default ErrorPage
+        return () => clearTimeout(timeout);
+    }, []);
+
+    return (
+        <div style={{ textAlign: 'center' }}>
+            <h1>Error al cargar esta página</h1>
+            <img src={ErrorImage} alt="Error" style={{ width: '100%' }} />
+        </div>
+    );
+};
+
+export default ErrorPage;
