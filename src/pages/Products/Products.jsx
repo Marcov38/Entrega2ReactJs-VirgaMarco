@@ -1,21 +1,22 @@
 import React from 'react';
 import './products.css';
-import { mockData } from '../../mocks/products';
 import CardProducts from '../../components/CardProducts/CardProducts';
+import { useContext } from 'react';
+import { cardsContext } from '../../components/context/CardContext';
 
 const Products = () => {
+    const { productList, isLoading } = useContext(cardsContext);
     return (
         <div className="card-container">
-            {mockData.map((product) => (
-                <CardProducts
-                    key={product.productId}
-                    name={product.name}
-                    price={`El precio es $${product.price}`}
-                    description={product.description}
-                    img={product.img}
-                    productId={product.productId}
-                />
-            ))}
+            {isLoading ? (
+                <div className="skeleton-container">
+                    <div className="skeleton-card"></div>
+                    <div className="skeleton-card"></div>
+                    <div className="skeleton-card"></div>
+                </div>
+            ) : (
+                productList.map((product) => <CardProducts product={product} key={product.id} />)
+            )}
         </div>
     );
 };

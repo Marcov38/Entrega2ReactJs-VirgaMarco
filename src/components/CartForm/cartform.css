@@ -1,0 +1,12 @@
+.contact-form {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+    justify-content: center;
+}
+
+.contact-form .MuiFormControl-root {
+    width: 30%;
+}

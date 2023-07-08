@@ -1,5 +1,8 @@
 import React from 'react';
 import './NavBar.css';
+import Logo from './Logo4.png';
+import CartWidget from '../CartWidget/CartWidget';
+//MUI ICONS AND MORE
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,10 +14,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import Logo from './Logo4.png';
-import CartWidget from '../CartWidget/CartWidget';
-//MUI ICONS
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
 import { Link } from 'react-router-dom';
 
 const pages = [
@@ -126,7 +126,6 @@ function ResponsiveAppBar() {
                         ))}
                     </Box>
                     <CartWidget />
-                    <ShoppingCartIcon />
                 </Toolbar>
             </Container>
         </AppBar>

@@ -1,5 +1,6 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import './contact.css';
+import Swal from 'sweetalert2';
 
 // MUI
 import { FormControl, Input, FormLabel, InputLabel, Button } from '@mui/material';
@@ -14,11 +15,27 @@ const Contact = () => {
     const [nombre, setNombre] = useState('');
     const [contacto, setContacto] = useState('');
     const [motivoContacto, setMotivoContacto] = useState('');
+    const [formValid, setFormValid] = useState(false);
 
     const onSubmit = (event) => {
         event.preventDefault();
         console.log(value, nombre, contacto, motivoContacto);
+        setValue('');
+        setNombre('');
+        setContacto('');
+        setMotivoContacto('');
     };
+
+    const validateForm = () => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const isEmailValid = emailRegex.test(value);
+        const isFormValid = nombre !== '' && contacto !== '' && isEmailValid;
+        setFormValid(isFormValid);
+    };
+
+    useEffect(() => {
+        validateForm();
+    }, [value, nombre, contacto]);
 
     return (
         <form className="contact-form" onSubmit={onSubmit}>
@@ -63,10 +80,15 @@ const Contact = () => {
                 variant="standard"
             />
             <div>
-                <Button variant="outlined" startIcon={<DeleteIcon />}>
-                    Delete
-                </Button>
-                <Button variant="contained" startIcon={<SendIcon />} type="submit">
+                <Button
+                    variant="contained"
+                    startIcon={<SendIcon />}
+                    type="submit"
+                    disabled={!formValid}
+                    onClick={() => {
+                        Swal.fire('Formulario enviado exitosamente!');
+                    }}
+                >
                     Send
                 </Button>
             </div>

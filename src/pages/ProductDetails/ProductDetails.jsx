@@ -1,25 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './productDetails.css';
 import { useParams } from 'react-router-dom';
-import { getProduct } from '../../mocks/products';
+import { getDocumentById } from '../../mocks/products';
 import CardProducts from '../../components/CardProducts/CardProducts';
 
 const ProductDetails = () => {
     const { id } = useParams();
-    const product = getProduct(id);
+    const [product, setProduct] = useState(null);
+
+    useEffect(() => {
+        const fetchProduct = async () => {
+            const productData = await getDocumentById(id);
+            setProduct(productData);
+        };
+
+        fetchProduct();
+    }, [id]);
+
+    if (!product) {
+        return (
+            <div className="skeleton-container">
+                <div className="skeleton-card"></div>
+            </div>
+        );
+    }
 
     return (
         <div className="product-details-container">
-            <CardProducts
-                key={product.productId}
-                name={product.name}
-                price={`El precio es $${product.price}`}
-                description={product.description}
-                img={product.img}
-                productId={product.productId}
-                className={'product-detail-card'}
-                showDetails={false}
-            />
+            <CardProducts product={product} showDetails={false} />
         </div>
     );
 };

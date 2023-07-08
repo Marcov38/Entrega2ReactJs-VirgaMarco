@@ -1,0 +1,4 @@
+.cart-widget-container {
+    display: flex;
+    gap: 15px;
+}

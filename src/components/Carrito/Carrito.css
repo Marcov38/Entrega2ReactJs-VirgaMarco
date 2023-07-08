@@ -1,0 +1,16 @@
+.carrito-div {
+    margin: 10px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.btn-limpiar-carrito {
+    display: flex;
+    justify-content: space-around;
+    margin: 15px;
+}
+
+.subtotal-compra {
+    text-align: center;
+    margin: 10px;
+}
