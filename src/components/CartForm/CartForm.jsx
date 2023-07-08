@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import './cartform.css';
 import Swal from 'sweetalert2';
 
@@ -11,6 +11,7 @@ const cartForm = () => {
     const [nombre, setNombre] = useState('');
     const [apellidos, setApellidos] = useState('');
     const [telefono, setTelefono] = useState('');
+    const [formValid, setFormValid] = useState(false);
 
     const onSubmit = (event) => {
         event.preventDefault();
@@ -20,6 +21,17 @@ const cartForm = () => {
         setApellidos('');
         setTelefono('');
     };
+
+    const validateForm = () => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const isEmailValid = emailRegex.test(correo);
+        const isFormValid = nombre !== '' && apellidos !== '' && telefono !== '' && isEmailValid;
+        setFormValid(isFormValid);
+    };
+
+    useEffect(() => {
+        validateForm();
+    }, [correo, nombre, apellidos, telefono]);
 
     return (
         <form className="contact-form" onSubmit={onSubmit}>
@@ -69,8 +81,9 @@ const cartForm = () => {
                     variant="contained"
                     startIcon={<SendIcon />}
                     type="submit"
+                    disabled={!formValid}
                     onClick={() => {
-                        Swal.fire('Compra realizada correctamente');
+                        Swal.fire('Formulario enviado exitosamente!');
                     }}
                 >
                     Send
